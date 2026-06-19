@@ -8,7 +8,7 @@ This report analyzes the performance, cost, latency, and prediction accuracy of 
 - **Model**: `heuristic-v1`
 - **Images Processed**: 0
 - **Cache Hits**: 20 / 20 (100.0%)
-- **Total Runtime**: 0.44 seconds
+- **Total Runtime**: 0.30 seconds
 - **Average Latency**: 0.02 seconds/claim
 - **Errors**: 0
 
@@ -37,7 +37,7 @@ Below is an operational cost projection based on model token rates.
 - **Output Tokens Used**: 0
 - **Total Token Cost (Sample Set)**: $0.00000
 - **Average Cost per Claim**: $0.00000
-- **Projected Cost for Full Test Set (45 claims)**: $0.00000
+- **Projected Cost for Full Test Set (44 claims)**: $0.00000
 
 ### 2. Projected Claude 3.5 Sonnet Cost (Production Model)
 - **Pricing Assumptions**:
@@ -46,7 +46,7 @@ Below is an operational cost projection based on model token rates.
   - Output Token Length: ~150 output tokens per claim for structured JSON output.
 - **Estimated Average Cost per Claim**: $0.00675 (Input: $0.00450 + Output: $0.00225)
 - **Projected Cost for Sample Set (20 claims)**: $0.13500
-- **Projected Cost for Full Test Set (45 claims)**: $0.30375
+- **Projected Cost for Full Test Set (44 claims)**: $0.29700
 
 
 ## Performance, Latency & Scale

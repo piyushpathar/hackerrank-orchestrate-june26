@@ -8,6 +8,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from typing import Any
 
 # Add the parent directory of this script (which is "code/") to python path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -104,6 +105,7 @@ def main() -> None:
     # Process concurrently using ThreadPoolExecutor
     print(f"Running processing pipeline with {config.max_workers} workers...")
     with ThreadPoolExecutor(max_workers=config.max_workers) as executor:
+        # Submit each claim exactly once; map future -> claim for ordering/errors.
         futures = {
             executor.submit(
                 process_claim,
@@ -117,28 +119,13 @@ def main() -> None:
             for claim in claims
         }
 
-        # Keep track in original order
-        futures_list = [
-            (executor.submit(
-                process_claim,
-                claim,
-                provider,
-                config,
-                cache,
-                requirements,
-                history_index,
-            ), claim)
-            for claim in claims
-        ]
-
-        # Gather results in order of completion
-        for future in as_completed([f[0] for f in futures_list]):
+        # Gather results as they complete (re-ordered to input order below).
+        for future in as_completed(futures):
+            claim = futures[future]
             try:
-                res = future.result()
-                results.append(res)
+                results.append(future.result())
             except Exception as exc:
                 # Handle unexpected exceptions in thread
-                claim = futures[future]
                 print(f"Unhandled thread exception for user {claim.user_id}: {exc}")
 
     elapsed = time.time() - start_time

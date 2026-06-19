@@ -235,7 +235,7 @@ Below is an operational cost projection based on model token rates.
 - **Output Tokens Used**: {tokens_out}
 - **Total Token Cost (Sample Set)**: ${total_cost:.5f}
 - **Average Cost per Claim**: ${total_cost / max(len(results), 1):.5f}
-- **Projected Cost for Full Test Set (45 claims)**: ${(total_cost / max(len(results), 1)) * 45:.5f}
+- **Projected Cost for Full Test Set (44 claims)**: ${(total_cost / max(len(results), 1)) * 44:.5f}
 
 ### 2. Projected Claude 3.5 Sonnet Cost (Production Model)
 - **Pricing Assumptions**:
@@ -244,7 +244,7 @@ Below is an operational cost projection based on model token rates.
   - Output Token Length: ~150 output tokens per claim for structured JSON output.
 - **Estimated Average Cost per Claim**: $0.00675 (Input: $0.00450 + Output: $0.00225)
 - **Projected Cost for Sample Set (20 claims)**: ${0.00675 * 20:.5f}
-- **Projected Cost for Full Test Set (45 claims)**: ${0.00675 * 45:.5f}
+- **Projected Cost for Full Test Set (44 claims)**: ${0.00675 * 44:.5f}
 
 
 ## Performance, Latency & Scale

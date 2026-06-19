@@ -1,0 +1,14 @@
+# ClaimVerify runtime dependencies.
+# The heuristic provider (default fallback) runs with the Python standard
+# library only. The packages below are needed for the LLM-backed providers
+# and for image downscaling.
+
+# Anthropic Claude vision provider (set ANTHROPIC_API_KEY to enable)
+anthropic>=0.39.0
+
+# OpenAI GPT-4o vision provider (set OPENAI_API_KEY to enable)
+openai>=1.51.0
+
+# Optional: image downscaling / WebP compression to reduce vision token cost.
+# If Pillow is not installed, images are sent without downscaling.
+Pillow>=10.4.0
